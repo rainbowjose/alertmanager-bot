@@ -83,7 +83,7 @@ func DiscordEmbedTemplate(alertman *_alertmanager.AlertManOut, discord *discordg
 		}
 
 		discord.Embeds = append(discord.Embeds, &discordgo.MessageEmbed{
-			Title:       alertman.CommonLabels.Alertname,                                                                                                                                       // Discord.Embeds.Title
+			Title:       strings.ToUpper(status) + "! " + alertman.CommonLabels.Alertname,                                                                                                                                       // Discord.Embeds.Title
 			Color:       GetStatusColor(status),                                                                                                                                                // Discord.Embeds.Color
 			Description: fmt.Sprintf("%s %s %s %s %s %s", embedsSummary, embedsDescription, embedsOwners, embedsDescriptionAlert, embedsRunbook, embedsGrafanaDashboard), // Discord.Embeds.Description
 			Image: &discordgo.MessageEmbedImage{
